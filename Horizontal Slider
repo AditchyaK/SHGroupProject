@@ -1,0 +1,25 @@
+# the below one goes into the setupUi function 
+
+   self.hslider(MainWindow)                                                     #the call line   
+   
+# all the below ones go into the main class
+
+   def hslider(self, MainWindow):
+        self.slider = QtWidgets.QSlider(self.centralwidget)
+        self.slider.setGeometry(QtCore.QRect(150, 230, 291, 31))                 #dimensions of slider
+        self.slider.setCursor(QtGui.QCursor(QtCore.Qt.ClosedHandCursor))         #the cursor type, The default was the normal pointer
+        self.slider.setMinimum(0)
+        self.slider.setMaximum(100)
+        self.slider.setSingleStep(10)                                            #the step it takes with the normal arrow keys
+        self.slider.setPageStep(50)                                              #the step it takes with the fast forward arrow keys
+        self.slider.setProperty("value", 20)
+        self.slider.setSliderPosition(20)                                        #start position of the tick
+        self.slider.setOrientation(QtCore.Qt.Horizontal)                         #change to a vertical slider if you want
+        self.slider.setTickPosition(QtWidgets.QSlider.TicksAbove)                #you can change where you want the ticks
+        self.slider.setTickInterval(20)                                          #sets the space between the ticks
+        self.slider.setObjectName("slider")
+        self.slider.valueChanged[int].connect(self.valuechange)
+
+
+    def valuechange(self, value):                                                # function that retrieves the value
+        print(value)
